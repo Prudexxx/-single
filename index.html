@@ -1,0 +1,1350 @@
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+        <title>Кама | Монастырская 25.</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: linear-gradient(135deg, #0a0f1e 0%, #0a1a2a 100%);
+                font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', sans-serif;
+                min-height: 100vh;
+                padding: 12px;
+                padding-bottom: 80px;
+                animation: fadeIn 0.8s ease-out;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            @media (max-width: 550px) {
+                body { padding-bottom: 100px; }
+            }
+
+            .main-wrapper {
+                max-width: 1400px;
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .box, .box1 {
+                background: rgba(15, 25, 45, 0.75);
+                backdrop-filter: blur(12px);
+                border-radius: 32px;
+                padding: 20px;
+                margin: 16px auto;
+                max-width: 1200px;
+                width: 100%;
+                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            @media (min-width: 1300px) {
+                .box, .box1 { max-width: 1000px; }
+            }
+
+            .logo {
+                width: 190px;
+                border-radius: 50%;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                transition: all 0.4s;
+                animation: floatLogo 3s infinite ease-in-out;
+                cursor: pointer;
+            }
+
+            @keyframes floatLogo {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-8px); }
+                100% { transform: translateY(0px); }
+            }
+
+            .hero-title {
+                font-size: clamp(32px, 8vw, 64px);
+                font-weight: 800;
+                text-align: center;
+                margin: 16px 0 8px 0;
+                letter-spacing: 4px;
+            }
+
+            .gradient-text {
+                background: linear-gradient(135deg, #fff8e7, #ffd966, #ffb347);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-size: clamp(24px, 6vw, 32px);
+                text-align: center;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+
+            .slider-container {
+                margin: 20px auto 30px;
+                position: relative;
+                border-radius: 28px;
+                overflow: hidden;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+                background: #1a2a3a;
+                width: 100%;
+            }
+
+            @media (min-width: 1300px) {
+                .slider-container { max-width: 600px; }
+                .video-section { max-width: 600px; margin-left: auto; margin-right: auto; }
+            }
+
+            .slides { display: flex; transition: transform 0.5s ease-in-out; }
+            .slide { min-width: 100%; line-height: 0; cursor: pointer; }
+            .slide img { width: 100%; height: auto; display: block; border-radius: 24px; transition: transform 0.2s ease; }
+            .slide img:hover { transform: scale(1.02); }
+
+            .slider-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.6);
+                color: #ffd966;
+                border: none;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 24px;
+                z-index: 10;
+            }
+            .slider-btn:hover { background: #ffd966; color: #1a2a3a; }
+            .slider-btn.prev { left: 15px; }
+            .slider-btn.next { right: 15px; }
+
+            .slider-dots { display: flex; justify-content: center; gap: 10px; margin-top: 15px; padding-bottom: 15px; }
+            .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 217, 102, 0.4); cursor: pointer; }
+            .dot.active { background: #ffd966; width: 25px; border-radius: 10px; }
+
+            .video-section { margin: 20px 0; }
+            .video-title { text-align: center; color: #ffd966; font-size: 20px; margin-bottom: 15px; font-weight: bold; }
+            .video { width: 100%; border-radius: 24px; display: block; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5); border: 2px solid rgba(255, 217, 102, 0.3); }
+
+            .toggle-btn {
+                background: linear-gradient(45deg, #ffb347, #ff8c00);
+                border: none;
+                padding: 24px 34px;
+                font-size: clamp(14px, 4vw, 20px);
+                font-weight: bold;
+                color: rgb(8, 8, 8);
+                border-radius: 60px;
+                cursor: pointer;
+                margin: 20px auto 30px auto;
+                display: block;
+                transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                width: fit-content;
+                min-width: 200px;
+            }
+
+            .toggle-btn:hover {
+                transform: scale(1.08);
+                box-shadow: 0 12px 28px rgba(255, 140, 0, 0.5);
+                background: linear-gradient(45deg, #ffc107, #ff7b00);
+            }
+
+            .toggle-btn:active {
+                transform: scale(0.95);
+                transition: 0.05s linear;
+            }
+
+            .weekdays-section {
+                margin: 10px 0 25px 0;
+            }
+
+            .weekdays-title {
+                text-align: center;
+                color: #ffd966;
+                font-size: 18px;
+                margin-bottom: 15px;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+
+            .weekdays-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .day-card {
+                background: linear-gradient(145deg, #1e2a3a, #0f1a24);
+                border: 2px solid rgba(255, 217, 102, 0.3);
+                border-radius: 20px;
+                padding: 16px 20px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-width: 80px;
+                flex: 0 1 auto;
+            }
+
+            .day-card:hover {
+                transform: translateY(-5px) scale(1.05);
+                border-color: #ffd966;
+                background: linear-gradient(145deg, #2a3a4a, #1a2a3a);
+                box-shadow: 0 10px 25px rgba(255, 217, 102, 0.3);
+            }
+
+            .day-name {
+                font-size: clamp(20px, 5vw, 28px);
+                font-weight: 800;
+                color: #ffd966;
+                letter-spacing: 2px;
+            }
+
+            .day-sub {
+                font-size: 12px;
+                color: #ffaa66;
+                margin-top: 6px;
+            }
+
+            @media (max-width: 550px) {
+                .weekdays-grid { gap: 10px; }
+                .day-card { padding: 12px 14px; min-width: 60px; }
+                .day-name { font-size: 18px; }
+            }
+
+            .hidden-content {
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 28px;
+                padding: 0 12px;
+            }
+
+            .hidden-content.show {
+                max-height: 30000px;
+                opacity: 1;
+                padding: 16px;
+                margin-top: 16px;
+                margin-bottom: 20px;
+            }
+
+            .расписание-вертикальное {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin: 20px 0 30px 0;
+            }
+
+            .служащий-карточка {
+                background: rgba(20, 30, 45, 0.8);
+                backdrop-filter: blur(4px);
+                border-radius: 24px;
+                overflow: hidden;
+                border: 1px solid rgba(255, 217, 102, 0.2);
+                transition: all 0.3s ease;
+            }
+
+            .служащий-карточка:hover {
+                transform: translateX(5px);
+                border-color: #ffd966;
+            }
+
+            .имя-служащего {
+                background: linear-gradient(135deg, #ffb34730, #ff8c0030);
+                padding: 14px 18px;
+                font-weight: bold;
+                font-size: 18px;
+                color: #ffdd99;
+                border-bottom: 2px solid #ffb347;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .имя-служащего::before {
+                content: "👤";
+                font-size: 20px;
+            }
+
+            .дни-сетка {
+                display: grid;
+                gap: 8px;
+                padding: 14px;
+            }
+
+            .служащий-карточка .дни-сетка {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .служащий-карточка[data-type="утро-вечер"] .дни-сетка {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @media (max-width: 550px) {
+                .служащий-карточка .дни-сетка {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .служащий-карточка[data-type="утро-вечер"] .дни-сетка {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (min-width: 551px) and (max-width: 800px) {
+                .служащий-карточка .дни-сетка {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+                .служащий-карточка[data-type="утро-вечер"] .дни-сетка {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            @media (min-width: 801px) {
+                .служащий-карточка .дни-сетка {
+                    grid-template-columns: repeat(7, 1fr);
+                }
+                .служащий-карточка[data-type="утро-вечер"] .дни-сетка {
+                    grid-template-columns: repeat(7, 1fr);
+                }
+            }
+
+            .день-ячейка {
+                background: rgba(30, 40, 55, 0.6);
+                border-radius: 16px;
+                padding: 10px 6px;
+                text-align: center;
+                word-break: break-word;
+            }
+
+            .название-дня {
+                font-size: 12px;
+                font-weight: bold;
+                color: #ffd966;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+            .подзаголовок {
+                font-size: 10px;
+                color: #ffaa66;
+                display: block;
+                margin-top: 4px;
+            }
+
+            .значение-служения {
+                font-size: 14px;
+                font-weight: 500;
+                color: #f0f0f0;
+                padding: 6px;
+                border-radius: 12px;
+                background: rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+                transition: all 0.2s;
+                word-break: break-word;
+            }
+
+            .значение-служения.свободно {
+                background: linear-gradient(145deg, #1e7a4a, #0f5e38);
+                color: white;
+                font-weight: bold;
+                box-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
+                animation: pulseGreen 1.8s infinite;
+            }
+
+            @keyframes pulseGreen {
+                0% { box-shadow: 0 0 0 0 rgba(70, 200, 120, 0.5); }
+                70% { box-shadow: 0 0 0 8px rgba(70, 200, 120, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(70, 200, 120, 0); }
+            }
+
+            .значение-служения.свободно:hover {
+                transform: scale(1.02);
+                filter: brightness(1.1);
+            }
+
+            .кнопка-подробнее {
+                background: rgba(255, 217, 102, 0.2);
+                border: 1px solid #ffd966;
+                padding: 8px 16px;
+                margin: 12px 14px 14px auto;
+                border-radius: 30px;
+                color: #ffd966;
+                font-size: 13px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                width: fit-content;
+            }
+
+            .кнопка-подробнее:hover {
+                background: #ffd966;
+                color: #1a2a3a;
+                transform: scale(1.02);
+                box-shadow: 0 0 15px rgba(255, 217, 102, 0.5);
+            }
+
+            select {
+                background: #1e2a3a;
+                color: #ffefc0;
+                padding: 12px 16px;
+                border-radius: 50px;
+                border: 1px solid #ffd966;
+                font-size: 14px;
+                margin: 12px 0;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            .box1 h2 { color: #ffdfa5; margin-bottom: 16px; font-size: clamp(18px, 5vw, 28px); }
+            textarea { width: 100%; background: #0f1a24; border: 2px solid #ffd96666; border-radius: 24px; padding: 14px; color: white; font-size: 14px; }
+            button[type="submit"] { background: #ff8c42; border: none; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 40px; color: rgb(0, 0, 0); cursor: pointer; width: 100%; max-width: 280px; }
+            
+            .modal-day {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(12px);
+                z-index: 10000;
+                justify-content: center;
+                align-items: center;
+                animation: fadeInModal 0.25s ease;
+            }
+
+            @keyframes fadeInModal {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+
+            .modal-day-content {
+                background: linear-gradient(135deg, #1e2a3a, #0f1a24);
+                border-radius: 32px;
+                padding: 30px;
+                max-width: 500px;
+                width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
+                border: 2px solid #ffd966;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+                animation: zoomIn 0.3s ease;
+            }
+
+            @keyframes zoomIn {
+                from { transform: scale(0.9); opacity: 0; }
+                to { transform: scale(1); opacity: 1; }
+            }
+
+            .modal-day-content h3 {
+                color: #ffd966;
+                font-size: 32px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .modal-day-content p {
+                color: #f0f0f0;
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+                white-space: pre-wrap;
+            }
+
+            .modal-day-close {
+                background: #ff8c42;
+                border: none;
+                padding: 12px 28px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 40px;
+                color: white;
+                cursor: pointer;
+                display: block;
+                margin: 0 auto;
+                transition: 0.2s;
+            }
+
+            .modal-day-close:hover {
+                background: #ffaa55;
+                transform: scale(1.02);
+            }
+
+            .modal-description {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(12px);
+                z-index: 20000;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal-description-content {
+                background: linear-gradient(135deg, #1e2a3a, #0f1a24);
+                border-radius: 32px;
+                padding: 30px;
+                max-width: 500px;
+                width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
+                border: 2px solid #ffd966;
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+                animation: zoomIn 0.3s ease;
+            }
+
+            .modal-description-content h3 {
+                color: #ffd966;
+                font-size: 28px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .modal-description-content p {
+                color: #f0f0f0;
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .modal-description-close {
+                background: #ff8c42;
+                border: none;
+                padding: 10px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                border-radius: 40px;
+                color: white;
+                cursor: pointer;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .modal-gallery {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.96);
+                backdrop-filter: blur(12px);
+                z-index: 30000;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                cursor: pointer;
+            }
+
+            .modal-gallery-inner {
+                position: relative;
+                width: 90%;
+                max-width: 1100px;
+                max-height: 90vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal-gallery-image {
+                max-width: 90vw;
+                max-height: 85vh;
+                object-fit: contain;
+                border-radius: 16px;
+                animation: zoomIn 0.3s ease;
+            }
+
+            .modal-nav-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.7);
+                color: #ffd966;
+                border: 2px solid rgba(255, 217, 102, 0.5);
+                width: 56px;
+                height: 56px;
+                border-radius: 60px;
+                font-size: 32px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .modal-nav-btn:hover { background: #ffd966; color: #1a2a3a; }
+            .modal-prev { left: 5px; }
+            .modal-next { right: 5px; }
+            @media (min-width: 768px) {
+                .modal-prev { left: -20px; }
+                .modal-next { right: -20px; }
+            }
+            .modal-close-btn {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                font-size: 48px;
+                color: #ffd966;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+            .modal-counter {
+                position: absolute;
+                bottom: 20px;
+                background: rgba(0,0,0,0.6);
+                padding: 8px 18px;
+                border-radius: 60px;
+                color: #ffefc0;
+                font-size: 16px;
+            }
+
+            .daily-reader {
+                background: rgba(0, 0, 0, 0.35);
+                border-radius: 28px;
+                padding: 18px;
+                margin-bottom: 20px;
+                border-left: 6px solid #ffd966;
+            }
+            .daily-date {
+                font-size: 24px;
+                font-weight: bold;
+                color: #ffd966;
+                margin-bottom: 12px;
+            }
+            .daily-text {
+                color: #f5f0e0;
+                line-height: 1.6;
+                white-space: pre-wrap;
+                font-size: 15px;
+            }
+            a{ margin: 10px auto;
+                border-radius: 30px;
+                border:3px solid     #ee6e06;
+                background-color: #ee6e06;
+                color: #000;
+                padding: 10px ;
+                font-size: 16px;
+                text-align: center;
+
+            }
+
+            /* кнопка разаработчика */
+            /* НОВАЯ КВАДРАТНАЯ КНОПКА - 30% ширины экрана */
+.developer-button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto 20px auto;
+    width: 100%;
+}
+
+.developer-card {
+    width: 30vw;
+    max-width: 280px;
+    min-width: 180px;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(145deg, #212e42, #0f1825);
+    border-radius: 28px;
+    border: 2px solid rgba(255, 217, 102, 0.7);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,215,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.developer-card:hover {
+    transform: scale(1.02) translateY(-6px);
+    border-color: #ffd966;
+    box-shadow: 0 25px 40px rgba(255, 200, 50, 0.4);
+    background: linear-gradient(145deg, #2a3b55, #13212f);
+}
+
+.developer-card:active {
+    transform: scale(0.97);
+    transition: 0.05s linear;
+}
+
+.dev-avatar {
+    width: 45%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid #ffd966;
+    background: #00000030;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.dev-text {
+    font-size: clamp(12px, 4vw, 18px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffefb0, #ffb347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 60px;
+    backdrop-filter: blur(2px);
+}
+
+@media (max-width: 640px) {
+    .developer-card { width: 40vw; min-width: 140px; }
+}
+
+@media (max-width: 480px) {
+    .developer-card { width: 50vw; }
+}
+
+      .central-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 550px;
+            gap: 2rem;
+        }
+
+        /* КНОПКА-ЗАМОК — всегда по центру экрана (относительно body) */
+        .lock-button {
+            background: radial-gradient(circle at 30% 25%, #f6e7c5, #deb887);
+            border: none;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 1px 4px rgba(255, 255, 255, 0.6);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .lock-button:active {
+            transform: scale(0.96);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* SVG замка внутри кнопки */
+        .lock-svg {
+            width: 64px;
+            height: 64px;
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+            transition: filter 0.2s;
+        }
+
+        .lock-button:hover .lock-svg {
+            filter: drop-shadow(0 0 6px gold);
+        }
+
+        /* Блок с внутренней инфой (появляется после верного пароля) */
+        .info-panel {
+            background: rgba(255, 248, 225, 0.95);
+ backdrop-filter: blur(2px);
+            width: 100%;
+            border-radius: 42px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.7);
+            text-align: left;
+            border-left: 8px solid #d4af37;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transform-origin: top;
+        }
+
+        /* Стили для скрытого блока */
+        .info-panel.hidden-panel {
+            display: none;
+        }
+
+        .info-panel.visible-panel {
+            display: block;
+            animation: fadeSlideUp 0.5s ease-out;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #2d2b1f;
+            border-bottom: 2px solid #dbb42c;
+            display: inline-block;
+            margin-bottom: 1rem;
+            letter-spacing: -0.3px;
+        }
+
+        .info-content {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #2c3e2f;
+        }
+
+        .info-content p {
+            margin: 12px 0;
+        }
+
+        .secret-badge {
+            background: #ecd67a;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #2c2b26;
+        }
+
+        /* МОДАЛЬНОЕ ОКНО (ввод пароля) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: #fef7e0;
+            border-radius: 48px;
+            width: 90%;
+            max-width: 380px;
+            padding: 2rem 1.8rem 2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 30px 45px rgba(0, 0, 0, 0.5), inset 0 1px 2px #fff8;
+            border: 1px solid #ffdf9c;
+            transform: scale(0.92);
+            transition: transform 0.25s cubic-bezier(0.2, 1.2, 0.4, 1);
+        }
+
+        .active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #7a5c2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-card h3::before {
+            content: "🔒";
+            font-size: 1.6rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 1.2rem;
+            border: 2px solid #e4c37b;
+            border-radius: 60px;
+            outline: none;
+            background: white;
+            font-family: monospace;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+            transition: 0.2s;
+        }
+
+        .password-input:focus {
+            border-color: #b8860b;
+            box-shadow: 0 0 0 3px rgba(210, 150, 50, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .modal-btn {
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: #e9e3d0;
+            color: #4b3a1e;
+        }
+
+        .modal-btn.primary {
+            background: #d4af37;
+            color: #2d2412;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-btn.primary:hover {
+            background: #c49f2a;
+            transform: scale(0.97);
+        }
+
+        .modal-btn.secondary:hover {
+            background: #cdc6b0;
+        }
+
+        .error-msg {
+            color: #bc544b;
+            background: #fff0e6;
+            border-radius: 32px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: inline-block;
+        }
+
+        /* Адаптация под маленькие экраны — кнопка остается по центру */
+        @media (max-width: 550px) {
+            .lock-button {
+                width: 110px;
+                height: 110px;
+            }
+            .lock-svg {
+                width: 54px;
+                height: 54px;
+            }
+            .info-panel {
+                padding: 1.2rem 1.5rem;
+            }
+        }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+    <div class="main-wrapper">
+        <div class="box">
+            <div style="text-align:center"><img class="logo gallery-img" src="Логотип.jpg" alt="Логотип"></div>
+            <div class="hero-title">
+                <img style="width: 90%; cursor: pointer;" src="image (60).png" alt="" class="gallery-img">
+            </div>
+<!--         
+            <div class="gradient-text">Первое собрание и открытие было на ул ??? <br> ??? года. </div> -->
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img style="width: 90%; cursor: pointer;" src="ЮБИЛЕЙ.png" alt="Картинка 1" class="gallery-img">
+            </div>   
+            
+            <div class="video-section">
+                <div class="video-title">🎬 видео как добраться до Камы</div>
+                <video class="video" muted src="video_2025-05-03_02-16-32_cropped.mp4" autoplay loop playsinline></video>
+            </div>
+            <!-- <div style="text-align: center;">
+                <img style="width: 90%; cursor: pointer;" src="ЮБИЛЕЙ.png" alt="Юбилей" class="gallery-img">
+            </div> -->
+    <div class="ssylki" style="display: flex;">  <a href="https://web.max.ru/-73650613203632" target="_blank"> Чат рабочий </a>    </div>
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <div class="slides" id="slides">
+                        <div class="slide"><img src="Av41eZpQ86FLXqWNyw2C7tZvpUZ7PS5bgsW89vLE1PiOpEJ9iPFXaPPOAgd6HZVDErRbfuw6x1QojCTuAb89xoLW.jpg" alt="мира 1" class="gallery-img"></div>
+                        <div class="slide"><img src="vvRcOSlic45vRcXAINFTrRphNgyGPyIL8XpNbjWId3-q0G9gY5YQH7v03uGB2c1a9FKg0PKfn2aNd0p7HOalAYy_.jpg" alt="мира 2" class="gallery-img"></div>
+                    </div>
+                    <button class="slider-btn prev" id="prevBtn">❮</button>
+                    <button class="slider-btn next" id="nextBtn">❯</button>
+                </div>
+                <div class="slider-dots" id="dots"></div>
+            </div>
+
+
+            <div class="weekdays-section">
+                <div class="weekdays-title">📅 МЕРОПРИЯТИЯ ПО ДНЯМ с 27.04 по 03.05</div>
+                <div class="weekdays-grid" id="weekdaysGrid">
+                    <div class="day-card" data-day="ПН"><div class="day-name">ПН</div><div class="day-sub">Понедельник</div></div>
+                    <div class="day-card" data-day="ВТ"><div class="day-name">ВТ</div><div class="day-sub">Вторник</div></div>
+                    <div class="day-card" data-day="СР"><div class="day-name">СР</div><div class="day-sub">Среда</div></div>
+                    <div class="day-card" data-day="ЧТ"><div class="day-name">ЧТ</div><div class="day-sub">Четверг</div></div>
+                    <div class="day-card" data-day="ПТ"><div class="day-name">ПТ</div><div class="day-sub">Пятница</div></div>
+                    <div class="day-card" data-day="СБ"><div class="day-name">СБ</div><div class="day-sub">Суббота</div></div>
+                    <div class="day-card" data-day="ВС"><div class="day-name">ВС</div><div class="day-sub">Воскресенье</div></div>
+                </div>
+            </div>
+
+            <button class="toggle-btn" id="toggleServicesBtn">📋 Доступные вакантные служения</button>
+
+            <div class="hidden-content" id="servicesContent">
+                <p style="text-align:center; margin-bottom: 16px;">🟢 <strong style="color:#6fef9f;">Активные служения <br> c - свободно</strong></p>
+                <div id="scheduleContainer"></div>
+                <br>
+                <!-- <label for="mySelect">📅 Собрания проходят:</label>
+                <select id="mySelect">
+                    <option>Понедельник с 18:30 до 20:00</option>
+                    <option>Вторник с 18:30 до 20:00</option>
+                    <option>Среда с 18:30 до 20:00</option>
+                    <option>Четверг с 18:30 до 20:00</option>
+                    <option>Пятница с 18:30 до 20:00</option>
+                    <option>Суббота с 18:30 до 20:00</option>
+                    <option>Воскресенье утро c 11:00 до 12:00</option>
+                    <option>Воскресенье вечер с 18:30 до 19:30</option>
+                </select> -->
+            </div>
+            
+            <button class="toggle-btn" id="toggleDailyBtn">📖 Ежедневник</button>
+
+            <div class="hidden-content" id="dailyContent">
+                <div id="dailyGreetingContainer" class="daily-reader"></div>
+            </div>
+            
+        </div>
+
+        <!-- <div class="box1">
+            <h2>✉️ Отправить анонимный вопрос на собрание гр.</h2>
+            <form id="telegramForm">
+                <label for="message">Сообщение:</label><br>
+                <textarea id="message" name="message" rows="4" required placeholder="Ваш вопрос будет отправлен анонимно..."></textarea><br><br>
+                <button type="submit">🚀 Отправить анонимно</button>
+              
+            </form>
+             
+        </div> -->
+    <!-- НОВАЯ КВАДРАТНАЯ КНОПКА 30% С РАЗРАБОТЧИКОМ -->
+<div class="developer-button-wrapper">
+    <a href="https://max.ru/u/f9LHodD0cOLGAoQLDj9bbo1V2b7ZQiHidn8Aoth1LugsIB7poD49jis2uwY" target="_blank" class="developer-card">
+        <img src="разработчик.jpg" alt="Разработчик" class="dev-avatar">
+        <div class="dev-text">Связь с разработчиком</div>
+    </a>
+</div>
+    </div>
+
+    <div id="dayModal" class="modal-day">
+        <div class="modal-day-content">
+            <h3 id="modalDayTitle"></h3>
+            <p id="modalDayDescription"></p>
+    
+        </div>
+    </div>
+    
+
+    <div id="descriptionModal" class="modal-description">
+        <div class="modal-description-content">
+            <h3 id="modalServiceTitle"></h3>
+            <p id="modalServiceDescription"></p>
+            <button class="modal-description-close" id="descriptionModalClose">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="galleryModal" class="modal-gallery">
+        <button class="modal-close-btn" id="galleryCloseBtn">&times;</button>
+        <div class="modal-gallery-inner">
+            <button class="modal-nav-btn modal-prev" id="galleryPrevBtn">❮</button>
+            <img class="modal-gallery-image" id="galleryImage" alt="Просмотр">
+            <button class="modal-nav-btn modal-next" id="galleryNextBtn">❯</button>
+            <div class="modal-counter" id="galleryCounter">1 / 1</div>
+        </div>
+    </div>
+    
+
+    <!-- Замок -->
+<div class="central-wrapper">
+    <!-- КНОПКА С ЗАМКОМ (всегда по центру) -->
+    <button class="lock-button" id="lockBtn" aria-label="Открыть окно ввода пароля">
+        <svg class="lock-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 9V7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7V9H6C4.89543 9 4 9.89543 4 11V19C4 20.1046 4.89543 21 6 21H18C19.1046 21 20 20.1046 20 19V11C20 9.89543 19.1046 9 18 9H17ZM9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7V9H9V7Z" fill="#5C3E1F"/>
+            <path d="M12 14C10.8954 14 10 14.8954 10 16C10 17.1046 10.8954 18 12 18C13.1046 18 14 17.1046 14 16C14 14.8954 13.1046 14 12 14Z" fill="#E8C87A" stroke="#B37B2E" stroke-width="1.2"/>
+            <rect x="10" y="12" width="4" height="2" fill="#B37B2E" rx="0.5"/>
+        </svg>
+    </button>
+
+    <!-- Блок для отображения внутренней информации (изначально скрыт) -->
+    <div id="secretInfoBlock" class="info-panel hidden-panel">
+        <div class="info-title">🗝️ Секретный архив</div>
+        <div class="info-content">
+            <p><span class="secret-badge">⚡ ДОСТУП РАЗРЕШЁН ⚡</span></p>
+            <p>✨ <strong>Внутренняя информация:</strong> Древний орден хранителей кода подтверждает — ты ввёл верный пароль.<br>
+            ➤ Код ядра системы: <code style="background:#ece3c9; padding:2px 8px; border-radius:20px;">#ACCESS_GRANTED_42</code><br>
+            ➤ Локация тайника: Координаты 54° с.ш., 36° в.д. (зашифровано)<br>
+            ➤ Артефакт: «Свиток бесконечного цикла» (while(true) { wisdom++ })<br>
+            ➤ Уровень допуска: <strong style="color:#b8860b;">МАКСИМАЛЬНЫЙ</strong> 🛡️</p>
+            <p style="font-style:italic; border-left: 3px solid gold; padding-left: 12px;">«Тот, кто знает пароль, управляет судьбой данных» — легенда гласит...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно (ввод пароля) -->
+<div id="passwordModal" class="modal-overlay">
+    <div class="modal-card">
+        <h3>Введите пароль</h3>
+        <input type="password" id="passwordField" class="password-input" placeholder="••••••••" autocomplete="off">
+        <div class="modal-buttons">
+            <button id="submitPasswordBtn" class="modal-btn primary">🔓 Открыть</button>
+            <button id="closeModalBtn" class="modal-btn secondary">✖ Отмена</button>
+        </div>
+        <div id="modalErrorMsg" style="min-height: 36px;"></div>
+    </div>
+</div>
+
+    <script>
+        // ===================== ПОЛНЫЙ ЕЖЕДНЕВНИК (Апрель 2026) =====================
+    
+
+        // ===================== ДНИ НЕДЕЛИ =====================
+        
+
+        // Модальное окно для дня
+        const dayModalEl = document.getElementById('dayModal');
+        const modalDayTitle = document.getElementById('modalDayTitle');
+        const modalDayDescription = document.getElementById('modalDayDescription');
+        const dayModalClose = document.getElementById('dayModalClose');
+        function openDayModal(day, description) {
+            modalDayTitle.textContent = day;
+            modalDayDescription.innerHTML = description.replace(/\n/g, '<br>');
+            dayModalEl.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDayModal() { dayModalEl.style.display = 'none'; document.body.style.overflow = ''; }
+        if (dayModalClose) dayModalClose.addEventListener('click', closeDayModal);
+        if (dayModalEl) dayModalEl.addEventListener('click', (e) => { if (e.target === dayModalEl) closeDayModal(); });
+        document.querySelectorAll('.day-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const day = card.getAttribute('data-day');
+                const description = eventsByDay[day] || `📅 ${day}\n\nМероприятие на этот день пока не запланировано.`;
+                openDayModal(day, description);
+            });
+        });
+
+        // ===================== ЕЖЕДНЕВНИК =====================
+        function getCurrentDaily() {
+            const today = new Date();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const key = `${month}-${day}`;
+            const greeting = DAILY_GREETINGS[key] || `✨ Медитация на ${day}.${month} пока не добавлена. Загляните позже! ✨`;
+            const formattedDate = `${day}.${month}`;
+            return { date: formattedDate, text: greeting };
+        }
+        
+        function renderDaily() {
+            const daily = getCurrentDaily();
+            const container = document.getElementById('dailyGreetingContainer');
+            if (container) {
+                container.innerHTML = `
+                    <div class="daily-date">📅 Ежедневник • ${daily.date}</div>
+                    <div class="daily-text">${daily.text.replace(/\n/g, '<br>')}</div>
+                `;
+            }
+        }
+        
+        const toggleDailyBtn = document.getElementById('toggleDailyBtn');
+        const dailyContent = document.getElementById('dailyContent');
+        if (toggleDailyBtn && dailyContent) {
+            toggleDailyBtn.addEventListener('click', function() {
+                dailyContent.classList.toggle('show');
+                toggleDailyBtn.textContent = dailyContent.classList.contains('show') ? '🔒 Закрыть ежедневник' : '📖 Ежедневник';
+                if (dailyContent.classList.contains('show')) renderDaily();
+            });
+        }
+
+        // ===================== ГАЛЕРЕЯ =====================
+        let allImages = [], currentImageIndex = 0;
+        const galleryModal = document.getElementById('galleryModal'), galleryImage = document.getElementById('galleryImage');
+        const galleryCounter = document.getElementById('galleryCounter'), galleryPrev = document.getElementById('galleryPrevBtn');
+        const galleryNext = document.getElementById('galleryNextBtn'), galleryClose = document.getElementById('galleryCloseBtn');
+        function collectAllImages() { 
+            const imgs = []; 
+            document.querySelectorAll('.gallery-img, .logo, .slide img').forEach(img => { if (img.src && !imgs.includes(img.src)) imgs.push(img.src); });
+            return imgs;
+        }
+        function updateGalleryImage() { if(galleryImage) galleryImage.src = allImages[currentImageIndex]; if(galleryCounter) galleryCounter.innerText = `${currentImageIndex+1}/${allImages.length}`; }
+        function openGallery(idx) { currentImageIndex = Math.min(Math.max(0, idx), allImages.length-1); updateGalleryImage(); if(galleryModal) galleryModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeGallery() { if(galleryModal) galleryModal.style.display = 'none'; document.body.style.overflow = ''; }
+        function nextImage() { currentImageIndex = (currentImageIndex+1)%allImages.length; updateGalleryImage(); }
+        function prevImage() { currentImageIndex = (currentImageIndex-1+allImages.length)%allImages.length; updateGalleryImage(); }
+        if(galleryPrev) galleryPrev.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        if(galleryNext) galleryNext.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+        if(galleryClose) galleryClose.addEventListener('click', closeGallery);
+        if(galleryModal) galleryModal.addEventListener('click', (e) => { if (e.target === galleryModal) closeGallery(); });
+        document.querySelectorAll('.gallery-img, .logo, .slide img').forEach(img => { img.addEventListener('click', (e) => { e.stopPropagation(); allImages = collectAllImages(); const idx = allImages.findIndex(s => s === img.src); openGallery(idx !== -1 ? idx : 0); }); });
+
+        // ===================== СЛУЖЕНИЯ =====================
+        const toggleServicesBtn = document.getElementById('toggleServicesBtn');
+        const servicesContent = document.getElementById('servicesContent');
+        if(toggleServicesBtn && servicesContent) {
+            toggleServicesBtn.addEventListener('click', function() {
+                servicesContent.classList.toggle('show');
+                toggleServicesBtn.textContent = servicesContent.classList.contains('show') ? '🔒 Скрыть вакантные служения' : '📋 Доступные вакантные служения';
+            });
+        }
+
+  
+
+        const дниНеделиОбычные = [{короткий:"Пн"},{короткий:"Вт"},{короткий:"Ср"},{короткий:"Чт"},{короткий:"Пт"},{короткий:"Сб"},{короткий:"Вс"}];
+        const дниНеделиУтроВечер = [
+            {короткий:"Пн_утро",название:"Пн",подзаголовок:"утро"},{короткий:"Пн_вечер",название:"Пн",подзаголовок:"вечер"},
+            {короткий:"Вт_утро",название:"Вт",подзаголовок:"утро"},{короткий:"Вт_вечер",название:"Вт",подзаголовок:"вечер"},
+            {короткий:"Ср_утро",название:"Ср",подзаголовок:"утро"},{короткий:"Ср_вечер",название:"Ср",подзаголовок:"вечер"},
+            {короткий:"Чт_утро",название:"Чт",подзаголовок:"утро"},{короткий:"Чт_вечер",название:"Чт",подзаголовок:"вечер"},
+            {короткий:"Пт_утро",название:"Пт",подзаголовок:"утро"},{короткий:"Пт_вечер",название:"Пт",подзаголовок:"вечер"},
+            {короткий:"Сб_утро",название:"Сб",подзаголовок:"утро"},{короткий:"Сб_вечер",название:"Сб",подзаголовок:"вечер"},
+            {короткий:"Вс_утро",название:"Вс",подзаголовок:"утро"},{короткий:"Вс_вечер",название:"Вс",подзаголовок:"вечер"}
+        ];
+        const descriptionModalElem = document.getElementById('descriptionModal');
+        const modalServiceTitle = document.getElementById('modalServiceTitle');
+        const modalServiceDescription = document.getElementById('modalServiceDescription');
+        const descriptionModalClose = document.getElementById('descriptionModalClose');
+        function openDescriptionModal(serviceName) {
+            if(modalServiceTitle) modalServiceTitle.textContent = serviceName;
+            if(modalServiceDescription) modalServiceDescription.textContent = descriptionsService[serviceName] || "Описание служения пока не добавлено. Скоро появится!";
+            if(descriptionModalElem) descriptionModalElem.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeDescriptionModal() { if(descriptionModalElem) descriptionModalElem.style.display = 'none'; document.body.style.overflow = ''; }
+        if(descriptionModalClose) descriptionModalClose.addEventListener('click', closeDescriptionModal);
+        if(descriptionModalElem) descriptionModalElem.addEventListener('click', (e) => { if (e.target === descriptionModalElem) closeDescriptionModal(); });
+
+        function создатьВертикальноеРасписание() {
+            const container = document.getElementById("scheduleContainer");
+            if (!container) return;
+            container.innerHTML = '';
+            const вертикальныйКонтейнер = document.createElement("div");
+            вертикальныйКонтейнер.className = "расписание-вертикальное";
+            служащие.forEach(служащий => {
+                const карточка = document.createElement("div");
+                карточка.className = "служащий-карточка";
+                карточка.setAttribute("data-type", служащий.тип);
+                const имяБлок = document.createElement("div");
+                имяБлок.className = "имя-служащего";
+                имяБлок.innerText = служащий.имя;
+                карточка.appendChild(имяБлок);
+                const дниСетка = document.createElement("div");
+                дниСетка.className = "дни-сетка";
+                if (служащий.тип === "утро-вечер") {
+                    дниНеделиУтроВечер.forEach(день => {
+                        const деньЯчейка = document.createElement("div");
+                        деньЯчейка.className = "день-ячейка";
+                        const названиеДня = document.createElement("span");
+                        названиеДня.className = "название-дня";
+                        названиеДня.innerText = день.название;
+                        const подзаголовок = document.createElement("span");
+                        подзаголовок.className = "подзаголовок";
+                        подзаголовок.innerText = день.подзаголовок;
+                        const значениеСлужения = document.createElement("div");
+                        значениеСлужения.className = "значение-служения";
+                        let значение = служащий.расписание[день.короткий] || "";
+                        значениеСлужения.innerText = значение;
+                        if (значение.toLowerCase().trim() === "с") { значениеСлужения.classList.add("свободно"); значениеСлужения.title = "✅ Свободное служение!"; }
+                        деньЯчейка.appendChild(названиеДня);
+                        деньЯчейка.appendChild(подзаголовок);
+                        деньЯчейка.appendChild(значениеСлужения);
+                        дниСетка.appendChild(деньЯчейка);
+                    });
+                } else {
+                    дниНеделиОбычные.forEach(день => {
+                        const деньЯчейка = document.createElement("div");
+                        деньЯчейка.className = "день-ячейка";
+                        const названиеДня = document.createElement("span");
+                        названиеДня.className = "название-дня";
+                        названиеДня.innerText = день.короткий;
+                        const значениеСлужения = document.createElement("div");
+                        значениеСлужения.className = "значение-служения";
+                        let значение = служащий.расписание[день.короткий] || "";
+                        значениеСлужения.innerText = значение;
+                        if (значение.toLowerCase().trim() === "с") { значениеСлужения.classList.add("свободно"); значениеСлужения.title = "✅ Свободное служение!"; }
+                        деньЯчейка.appendChild(названиеДня);
+                        деньЯчейка.appendChild(значениеСлужения);
+                        дниСетка.appendChild(деньЯчейка);
+                    });
+                }
+                карточка.appendChild(дниСетка);
+                const кнопка = document.createElement("div");
+                кнопка.className = "кнопка-подробнее";
+                кнопка.innerText = "📖 Подробнее о служении";
+                кнопка.addEventListener("click", () => openDescriptionModal(служащий.имя));
+                карточка.appendChild(кнопка);
+                вертикальныйКонтейнер.appendChild(карточка);
+            });
+            container.appendChild(вертикальныйКонтейнер);
+        }
+
+        // ===================== СЛАЙДЕР =====================
+        let currentSlide = 0;
+        const slides = document.getElementById('slides');
+        const slidesCount = document.querySelectorAll('.slide').length;
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('dots');
+        function createDots() { if(dotsContainer) { dotsContainer.innerHTML = ''; for (let i=0; i<slidesCount; i++) { const dot = document.createElement('div'); dot.classList.add('dot'); if (i===currentSlide) dot.classList.add('active'); dot.addEventListener('click', () => goToSlide(i)); dotsContainer.appendChild(dot); } } }
+        function updateDots() { document.querySelectorAll('.dot').forEach((dot, idx) => dot.classList.toggle('active', idx === currentSlide)); }
+        function goToSlide(index) { currentSlide = Math.max(0, Math.min(index, slidesCount-1)); if(slides) slides.style.transform = `translateX(${-currentSlide*100}%)`; updateDots(); }
+        function nextSlide() { goToSlide(currentSlide+1 >= slidesCount ? 0 : currentSlide+1); }
+        function prevSlide() { goToSlide(currentSlide-1 < 0 ? slidesCount-1 : currentSlide-1); }
+        if(prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if(nextBtn) nextBtn.addEventListener('click', nextSlide);
+        createDots(); goToSlide(0);
+
+        // ===================== ТЕЛЕГРАМ =====================
+        const TELEGRAM_TOKEN = '7022624716:AAHgk1efmBL1tdUBBNT5__8PYSGQ_lT5wDc';
+        const CHAT_ID = '8164483415';
+        const form = document.getElementById('telegramForm');
+        if(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const message = document.getElementById('message').value.trim();
+                if (!message) { alert('Введите сообщение'); return; }
+                axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, { chat_id: CHAT_ID, text: message })
+                    .then(() => { alert('✅ Сообщение успешно отправлено!'); form.reset(); })
+                    .catch(() => alert('❌ Ошибка при отправке.'));
+            });
+        }
+
+        // ===================== ЗАПУСК =====================
+        window.onload = () => {
+            создатьВертикальноеРасписание();
+            const video = document.querySelector('.video');
+            if (video) video.play().catch(e => console.log('Автовоспроизведение заблокировано'));
+            allImages = collectAllImages();
+            renderDaily();
+        };
+    </script>
+    <script src="slugeniy.js"></script>
+    <script src="egednevnik.js"></script>
+     <script src="parol.js"></script>
+    </body>
+    </html>
